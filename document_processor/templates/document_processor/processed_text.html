@@ -1,0 +1,33 @@
+<!-- document_processor/templates/document_processor/processed_text.html -->
+{% extends 'document_processor/index.html' %}
+
+{% block title %}Processed Text{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2>Processed Text</h2>
+    </div>
+    <div class="card-body">
+        <h5>Extracted Text</h5>
+        <p>{{ document.extracted_text }}</p>
+        
+        <h5>Named Entities</h5>
+        <ul class="list-group">
+            {% for entity in document.named_entities %}
+                <li class="list-group-item">{{ entity.0 }} - {{ entity.1 }}</li>
+            {% endfor %}
+        </ul>
+
+        <h5>Text Classification</h5>
+        <div class="alert alert-secondary">
+            {{ document.text_classification }}
+        </div>
+
+        <h5>Sentiment Analysis</h5>
+        <div class="alert alert-secondary">
+            {{ document.sentiment }}
+        </div>
+    </div>
+</div>
+{% endblock %}

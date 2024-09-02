@@ -1,0 +1,34 @@
+<!-- document_processor/templates/document_processor/document_list.html -->
+{% extends 'document_processor/index.html' %}
+
+{% block title %}Document List{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2>Document List</h2>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Document Name</th>
+                    <th>Uploaded At</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for document in documents %}
+                    <tr>
+                        <td>{{ document.file.name }}</td>
+                        <td>{{ document.uploaded_at }}</td>
+                        <td>
+                            <a href="{% url 'processed_text' document.pk %}" class="btn btn-info btn-sm">View Processed Text</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

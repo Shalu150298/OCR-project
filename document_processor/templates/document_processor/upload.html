@@ -1,0 +1,22 @@
+<!-- document_processor/templates/document_processor/upload.html -->
+{% extends 'document_processor/index.html' %}
+
+{% block title %}Upload Document{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2>Upload Document</h2>
+    </div>
+    <div class="card-body">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.file.label_tag }}<br>
+                {{ form.file }}
+            </div>
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
